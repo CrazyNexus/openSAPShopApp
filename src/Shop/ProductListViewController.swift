@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SAPCommon
 
-class ViewController: UIViewController {
+class ProductListViewController: UIViewController {
+   
+   let logger = Logger.shared(named: "ProductListViewController")
 
     override func viewDidLoad() {
         super.viewDidLoad()
