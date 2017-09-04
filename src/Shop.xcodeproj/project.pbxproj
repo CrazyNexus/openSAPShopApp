@@ -673,7 +673,7 @@
 				TargetAttributes = {
 					755EE2461DD4760600F41DC4 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = H8QB58T8ZU;
+						DevelopmentTeam = 6K2ZG9TJHW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -913,7 +913,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H8QB58T8ZU;
+				DEVELOPMENT_TEAM = 6K2ZG9TJHW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -922,7 +922,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Shop/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks '$(SRCROOT)/../SDK'";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sap.mobile.apps.training-shop";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.crazynexus.training-shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -932,7 +932,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H8QB58T8ZU;
+				DEVELOPMENT_TEAM = 6K2ZG9TJHW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -941,7 +941,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Shop/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks '$(SRCROOT)/../SDK'";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sap.mobile.apps.training-shop";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.crazynexus.training-shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
