@@ -13,7 +13,7 @@
         <scene sceneID="K0Y-TN-0p8">
             <objects>
                 <navigationController id="KKQ-1F-uqg" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wHB-oD-guM" customClass="FUINavigationBar" customModule="SAPFiori">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wHB-oD-guM" customClass="FUINavigationBar" customModule="SAPFiori">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -36,13 +36,42 @@
                     <view key="view" contentMode="scaleToFill" id="R2u-kU-fqa">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Fp-Yh-scK">
+                                <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCellID" id="G1f-c1-gvE" customClass="FUIObjectTableViewCell" customModule="SAPFiori">
+                                        <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1f-c1-gvE" id="nvh-IU-cGt">
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="U57-u6-LJP" id="YH8-DG-7eZ"/>
+                                    <outlet property="delegate" destination="U57-u6-LJP" id="H3S-Bx-vom"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Fp-Yh-scK" secondAttribute="trailing" id="KOS-g6-NR9"/>
+                            <constraint firstItem="4Fp-Yh-scK" firstAttribute="leading" secondItem="R2u-kU-fqa" secondAttribute="leading" id="hBl-jT-2eS"/>
+                            <constraint firstItem="4Fp-Yh-scK" firstAttribute="top" secondItem="6tW-Am-HBG" secondAttribute="bottom" id="oYF-ud-bRA"/>
+                            <constraint firstItem="IJG-Fd-Qnj" firstAttribute="top" secondItem="4Fp-Yh-scK" secondAttribute="bottom" id="scE-pt-TnX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shop" id="4jN-mf-euG"/>
+                    <connections>
+                        <outlet property="tableView" destination="4Fp-Yh-scK" id="Gra-8n-tRW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3h-HS-cOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528" y="58"/>
+            <point key="canvasLocation" x="27.5390625" y="57.8125"/>
         </scene>
     </scenes>
 </document>
