@@ -5,14 +5,14 @@
 	<key>appId</key>
 	<string>com.sap.cp.training.shop</string>
 	<key>clientId</key>
-	<string></string>
+	<string>aa34f138-ddf0-4fb4-a694-ce1d707e88fc</string>
 	<key>serverUrl</key>
-	<string></string>
+	<string>https://hcpms-d041630trial.hanatrial.ondemand.com/com.sap.cp.training.shop</string>
 	<key>authUrl</key>
-	<string></string>
+	<string>https://oauthasservices-d041630trial.hanatrial.ondemand.com/oauth2/api/v1/authorize</string>
 	<key>tokenUrl</key>
-	<string></string>
+	<string>https://oauthasservices-d041630trial.hanatrial.ondemand.com/oauth2/api/v1/token</string>
 	<key>redirectUrl</key>
-	<string></string>
+	<string>https://oauthasservices-d041630trial.hanatrial.ondemand.com</string>
 </dict>
 </plist>

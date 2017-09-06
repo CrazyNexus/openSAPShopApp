@@ -14,19 +14,39 @@ import SAPOData
 /// unique to the shop implementation, like a reference to the OData service proxy and an image cache
 class Shop {
 
-    // the Shop singleton
-    static let shared = Shop()
+   // the Shop singleton
+   static let shared = Shop()
 
-    static let shoppingCartDidUpdateNotification = Notification.Name("shoppingCartDidUpdateNotification")
+   static let shoppingCartDidUpdateNotification = Notification.Name("shoppingCartDidUpdateNotification")
 
-    let imageCache = NSCache<NSString, UIImage>()
+   let imageCache = NSCache<NSString, UIImage>()
 
-    let oDataService: ShopService<OnlineODataProvider>?
+   let oDataService: ShopService<OnlineODataProvider>?
 
-    /// Initializes the dataService and dataProvider
-    private init() {
+   /// Initializes the dataService and dataProvider
+   private init() {
 
-        imageCache.name = "Loaded Images"
-        oDataService = nil
-    }
+      imageCache.name = "Loaded Images"
+      guard let connectionParameters = ConnectionManager.shared.connectionParameters,
+         let serviceEndpointURL = connectionParameters.serverURL else {
+         
+            oDataService = nil
+            return
+      }
+      
+      let onlineODataProvider = OnlineODataProvider(serviceRoot: serviceEndpointURL, sapURLSession: ConnectionManager.shared.sapUrlSession!)
+
+      // choose desired tracing settings for OData traffic
+      onlineODataProvider.prettyTracing = true
+      onlineODataProvider.traceRequests = true
+      onlineODataProvider.traceWithData = false
+      
+      // allow PATCH to be tunneled via POST (potential gateway restriction)
+      onlineODataProvider.networkOptions.tunneledMethods.append("PATCH")
+      
+      // NOTE: to actually see the requested output from above, logging for OData needs to be forced to debug level
+      Logger.shared(named: "SAP.OData").logLevel = .debug   // enables the logging only for SAP.OData stuff
+      
+      oDataService = ShopService(provider: onlineODataProvider)
+   }
 }

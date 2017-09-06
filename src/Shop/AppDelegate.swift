@@ -13,11 +13,19 @@ import SAPCommon
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
    var window: UIWindow?
+   var launchManager: StandardOAuthAppLaunchManager!
+   var logger = Logger.shared(named: "AppDelegate")
 
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
       Logger.root.logLevel = .info     // it's also possible to change to debug but then we get a lot of information
       Logger.root.add(handler: ConsoleLogHandler())
+      
+      launchManager = StandardOAuthAppLaunchManager(application: application, window: window!, launchOptions: launchOptions)
+      launchManager.manageAppLaunch {
+         onboaringResult, onboardingError, loginResult in
+         self.launch(onboardingResult: onboaringResult, onboardingError: onboardingError, loginResult: loginResult)
+      }
       
       return true
    }
@@ -42,5 +50,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
    func applicationWillTerminate(_ application: UIApplication) {
       // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+   }
+   
+   // MARK: Private Methods
+   
+   func launch(onboardingResult: StandardOAuthFlowResult?, onboardingError: StandardOAuthFlowError?, loginResult: StandardLoginFlowResult?) {
+      
+      guard onboardingError == nil else {
+         logger.error("An error occured during onboarding")
+         return
+      }
+      
+      ConnectionManager.shared.onboardingResult = onboardingResult
+      if let navigationController = self.window?.rootViewController as? UINavigationController,
+         let productListViewController = navigationController.viewControllers.first as? ProductListViewController {
+         
+         productListViewController.loadProducts()
+      }
    }
 }
