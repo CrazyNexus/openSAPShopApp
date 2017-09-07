@@ -81,6 +81,24 @@ class ProductListViewController: UIViewController {
       tableView.reloadData()
    }
    
+   // MARK: - Navigation
+    
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if let identifier = segue.identifier {
+         switch identifier {
+         case "showProductDetailSegue":
+            let detailController = segue.destination as! DetailViewController
+            let selectedRow = sender as! FUIObjectTableViewCell
+            let selectedIndexPath = tableView.indexPath(for: selectedRow)!
+            let selectedProduct = products[selectedIndexPath.row]
+            detailController.productID = selectedProduct.id
+            
+         default:
+            break
+         }
+      }
+   }
+   
 }
 
 extension ProductListViewController: UITableViewDataSource, UITableViewDelegate {
