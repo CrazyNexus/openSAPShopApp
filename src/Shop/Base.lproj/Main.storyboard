@@ -67,7 +67,14 @@
                             <constraint firstItem="IJG-Fd-Qnj" firstAttribute="top" secondItem="4Fp-Yh-scK" secondAttribute="bottom" id="scE-pt-TnX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Shop" id="4jN-mf-euG"/>
+                    <navigationItem key="navigationItem" title="Shop" id="4jN-mf-euG">
+                        <barButtonItem key="rightBarButtonItem" id="lHQ-05-XtW">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="phy-lS-AOw" customClass="ShoppingCartButton" customModule="Shop" customModuleProvider="target">
+                                <rect key="frame" x="964" y="4" width="40" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4Fp-Yh-scK" id="Gra-8n-tRW"/>
                     </connections>
@@ -89,6 +96,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Product" id="s8D-hh-M5d">
+                        <barButtonItem key="rightBarButtonItem" id="3Gx-Ac-qy3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="biA-U1-WIs" customClass="ShoppingCartButton" customModule="Shop" customModuleProvider="target">
+                                <rect key="frame" x="777" y="7" width="40" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="productView" destination="qoS-9b-BKH" id="fmR-QY-qTO"/>
                     </connections>

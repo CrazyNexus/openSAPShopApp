@@ -58,6 +58,8 @@ class ProductListViewController: UIViewController {
          self.tableView.separatorStyle = .singleLine
          self.loadingProductsCompleted(loadedProducts: products, error: error)
       })
+      
+      NotificationCenter.default.post(name: Shop.shoppingCartDidUpdateNotification, object: nil)
    }
    
    // MARK: Private Methods
