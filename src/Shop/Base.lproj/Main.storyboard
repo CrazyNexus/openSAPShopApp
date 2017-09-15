@@ -73,7 +73,9 @@
                                 <rect key="frame" x="964" y="4" width="40" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="bbL-jE-sdo" kind="presentation" modalPresentationStyle="formSheet" id="9SR-vK-xWt"/>
+                                    <segue destination="bbL-jE-sdo" kind="popoverPresentation" popoverAnchorView="phy-lS-AOw" id="9SR-vK-xWt">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -127,31 +129,36 @@
                         <viewControllerLayoutGuide type="bottom" id="6IB-WB-XEo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KSU-IC-rUl" customClass="WorklistView" customModule="Shop" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Shopping Cart" id="D3m-eO-erM">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="vMl-Ns-0gg">
+                        <barButtonItem key="rightBarButtonItem" title="Checkout" id="r28-jH-88c">
                             <connections>
-                                <action selector="didTapClose:" destination="reh-gX-gnX" id="uP0-1c-HZv"/>
+                                <action selector="didTabCheckout:" destination="reh-gX-gnX" id="UKO-CO-S7z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="checkoutButton" destination="r28-jH-88c" id="ypR-ST-u3c"/>
                         <outlet property="workList" destination="KSU-IC-rUl" id="G9Z-u0-OJV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NE8-Dd-fN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Close" id="vMl-Ns-0gg">
+                    <connections>
+                        <action selector="didTapClose:" destination="reh-gX-gnX" id="uP0-1c-HZv"/>
+                    </connections>
+                </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="415" y="848"/>
+            <point key="canvasLocation" x="659" y="848"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ynU-z6-cdd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g8n-Cv-WqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="bbL-jE-sdo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CrH-tn-3jf" customClass="FUINavigationBar" customModule="SAPFiori">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CrH-tn-3jf" customClass="FUINavigationBar" customModule="SAPFiori">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -159,11 +166,12 @@
                         <segue destination="reh-gX-gnX" kind="relationship" relationship="rootViewController" id="qrH-17-Jor"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8n-Cv-WqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40" y="848"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gzJ-7Z-w8S"/>
+        <segue reference="9SR-vK-xWt"/>
     </inferredMetricsTieBreakers>
 </document>
