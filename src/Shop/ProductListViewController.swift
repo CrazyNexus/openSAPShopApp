@@ -14,9 +14,15 @@ import SAPOData
 class ProductListViewController: UIViewController {
    
    @IBOutlet weak var tableView: UITableView!
+   @IBOutlet weak var searchBarContainer: UIView!
    
    let logger = Logger.shared(named: "ProductListViewController")
    let objectCellId = "ProductCellID"
+   
+   var productSearchBar: FUISearchBar!
+   var searchController: FUISearchController!
+   let debouncer = Debouncer()
+   var filterModel = FilterModel()
    
    fileprivate var products = [Product]()
 
@@ -30,34 +36,44 @@ class ProductListViewController: UIViewController {
       tableView.estimatedRowHeight = 80
       tableView.rowHeight = UITableViewAutomaticDimension
       tableView.register(FUIObjectTableViewCell.self, forCellReuseIdentifier: objectCellId)
+      configureSearchBar()
    }
    
    // MARK: Public Methods
    
    public func loadProducts() {
-      // select the properties to load
-      var query = DataQuery().select(Product.id,
-                                     Product.name,
-                                     Product.description,
-                                     Product.price,
-                                     Product.currencyCode,
-                                     Product.stockQuantity,
-                                     Product.mainCategoryName,
-                                     Product.ratingCount,
-                                     Product.averageRating)
+// old implememtation without a filter model
+//      // select the properties to load
+//      var query = DataQuery().select(Product.id,
+//                                     Product.name,
+//                                     Product.description,
+//                                     Product.price,
+//                                     Product.currencyCode,
+//                                     Product.stockQuantity,
+//                                     Product.mainCategoryName,
+//                                     Product.ratingCount,
+//                                     Product.averageRating)
+//      
+//      // expand the primary image
+//      query = query.expand(Product.primaryImage)
+//      
+//      // load the whole product list with all required properties
+//      let loadingIndicator = FUIModalLoadingIndicator.show(inView: tableView)
+//      Shop.shared.oDataService?.product(query: query, completionHandler: {
+//         products, error in
+//         
+//         loadingIndicator.dismiss()
+//         self.tableView.separatorStyle = .singleLine
+//         self.loadingProductsCompleted(loadedProducts: products, error: error)
+//      })
       
-      // expand the primary image
-      query = query.expand(Product.primaryImage)
-      
-      // load the whole product list with all required properties
+      // load the whole product list with required properties
       let loadingIndicator = FUIModalLoadingIndicator.show(inView: tableView)
-      Shop.shared.oDataService?.product(query: query, completionHandler: {
-         products, error in
-         
+      Shop.shared.oDataService?.product(query: filterModel.dataQuery) { products, error in
          loadingIndicator.dismiss()
          self.tableView.separatorStyle = .singleLine
          self.loadingProductsCompleted(loadedProducts: products, error: error)
-      })
+      }
       
       NotificationCenter.default.post(name: Shop.shoppingCartDidUpdateNotification, object: nil)
    }
@@ -81,6 +97,30 @@ class ProductListViewController: UIViewController {
       
       self.products = products
       tableView.reloadData()
+   }
+   
+   // Configure the search bar and enable the barcode scanner functionality.
+   private func configureSearchBar() {
+      
+      // set the searchResultsController to nil because we use this
+      // view controller for displaying the results
+      searchController = FUISearchController(searchResultsController: nil)
+      searchController.hidesNavigationBarDuringPresentation = true
+      searchController.searchResultsUpdater = self
+      productSearchBar = searchController.searchBar
+      
+      // Add barcode scanner
+      productSearchBar.isBarcodeScannerEnabled = true
+      productSearchBar.barcodeScanner?.scanMode = .all
+      productSearchBar.barcodeScanner?.scanResultTransformer = { scanResult in
+         return scanResult
+      }
+      
+      productSearchBar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+      self.searchBarContainer.addSubview(searchController.searchBar)
+      productSearchBar.sizeToFit()
+      
+      definesPresentationContext = true
    }
    
    // MARK: - Navigation
@@ -186,4 +226,17 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
       return [addToCart]
    }
    
+}
+
+//MARK: - UISearchResultsUpdating
+extension ProductListViewController : UISearchResultsUpdating {
+   
+   func updateSearchResults(for searchController: UISearchController) {
+      debouncer.debounce {
+         let text = searchController.searchBar.text ?? ""
+         self.filterModel.searchText = text.trimmingCharacters(in: .whitespaces)
+         Shop.shared.oDataService?.product(query: self.filterModel.dataQuery,
+                                           completionHandler: self.loadingProductsCompleted)
+      }
+   }
 }

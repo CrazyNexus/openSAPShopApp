@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Fp-Yh-scK">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                                <rect key="frame" x="0.0" y="108" width="1024" height="660"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCellID" id="G1f-c1-gvE" customClass="FUIObjectTableViewCell" customModule="SAPFiori">
@@ -58,12 +58,22 @@
                                     <outlet property="delegate" destination="U57-u6-LJP" id="H3S-Bx-vom"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rl4-6h-JBO">
+                                <rect key="frame" x="0.0" y="64" width="1024" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2OR-9d-XUx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rl4-6h-JBO" secondAttribute="trailing" id="AtW-ld-F7z"/>
                             <constraint firstAttribute="trailing" secondItem="4Fp-Yh-scK" secondAttribute="trailing" id="KOS-g6-NR9"/>
+                            <constraint firstItem="rl4-6h-JBO" firstAttribute="top" secondItem="6tW-Am-HBG" secondAttribute="bottom" id="Rdu-5Z-fPg"/>
                             <constraint firstItem="4Fp-Yh-scK" firstAttribute="leading" secondItem="R2u-kU-fqa" secondAttribute="leading" id="hBl-jT-2eS"/>
-                            <constraint firstItem="4Fp-Yh-scK" firstAttribute="top" secondItem="6tW-Am-HBG" secondAttribute="bottom" id="oYF-ud-bRA"/>
+                            <constraint firstItem="rl4-6h-JBO" firstAttribute="leading" secondItem="R2u-kU-fqa" secondAttribute="leading" id="pKW-8o-fyH"/>
+                            <constraint firstItem="4Fp-Yh-scK" firstAttribute="top" secondItem="rl4-6h-JBO" secondAttribute="bottom" id="r2U-ix-voN"/>
                             <constraint firstItem="IJG-Fd-Qnj" firstAttribute="top" secondItem="4Fp-Yh-scK" secondAttribute="bottom" id="scE-pt-TnX"/>
                         </constraints>
                     </view>
@@ -81,6 +91,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBarContainer" destination="rl4-6h-JBO" id="Rs1-74-e3x"/>
                         <outlet property="tableView" destination="4Fp-Yh-scK" id="Gra-8n-tRW"/>
                     </connections>
                 </viewController>
