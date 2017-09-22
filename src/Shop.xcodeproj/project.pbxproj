@@ -97,6 +97,7 @@
 		A5B14D6F1E8E66B600950FD4 /* SAPOData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5B14D5B1E8E665A00950FD4 /* SAPOData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5C12E591E8E5883008B9D0A /* ShopProxyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C12E581E8E5883008B9D0A /* ShopProxyExtension.swift */; };
 		B84C04341F75043600144BFF /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C04331F75043600144BFF /* FilterModel.swift */; };
+		B84C04361F750B9100144BFF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C04351F750B9100144BFF /* FilterViewController.swift */; };
 		B84D10971F6BCC64005EC5C1 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D10961F6BCC64005EC5C1 /* ShoppingCartViewController.swift */; };
 		B87458461F6027A2000F50F8 /* ConfigurationProvider.plist in Resources */ = {isa = PBXBuildFile; fileRef = B87458451F6027A2000F50F8 /* ConfigurationProvider.plist */; };
 		B87458481F6135C6000F50F8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87458471F6135C6000F50F8 /* DetailViewController.swift */; };
@@ -208,6 +209,7 @@
 		A5B14D5B1E8E665A00950FD4 /* SAPOData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SAPOData.framework; sourceTree = "<group>"; };
 		A5C12E581E8E5883008B9D0A /* ShopProxyExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopProxyExtension.swift; sourceTree = "<group>"; };
 		B84C04331F75043600144BFF /* FilterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
+		B84C04351F750B9100144BFF /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		B84D10961F6BCC64005EC5C1 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		B87458451F6027A2000F50F8 /* ConfigurationProvider.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigurationProvider.plist; sourceTree = "<group>"; };
 		B87458471F6135C6000F50F8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				755EE2561DD4760700F41DC4 /* Info.plist */,
 				B84D10961F6BCC64005EC5C1 /* ShoppingCartViewController.swift */,
 				B84C04331F75043600144BFF /* FilterModel.swift */,
+				B84C04351F750B9100144BFF /* FilterViewController.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				A52EBDD31ECC55060000BE41 /* AuthorizationManager.swift in Sources */,
 				A52EBDC71ECC55060000BE41 /* Block.swift in Sources */,
 				A52EBDD41ECC55060000BE41 /* PasscodeBlock.swift in Sources */,
+				B84C04361F750B9100144BFF /* FilterViewController.swift in Sources */,
 				A52EBDD71ECC55060000BE41 /* StandardOAuthAppLaunchManager.swift in Sources */,
 				A52EBDD01ECC55060000BE41 /* ConnectionParameters.swift in Sources */,
 				A52D9CFD1EA792EF0013F06A /* RatingValues.swift in Sources */,

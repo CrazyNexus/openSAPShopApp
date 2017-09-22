@@ -15,6 +15,8 @@ class ProductListViewController: UIViewController {
    
    @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var searchBarContainer: UIView!
+   @IBOutlet weak var filterButton: UIBarButtonItem!
+   @IBOutlet weak var productCountBarButtonItem: UIBarButtonItem!
    
    let logger = Logger.shared(named: "ProductListViewController")
    let objectCellId = "ProductCellID"
@@ -23,6 +25,7 @@ class ProductListViewController: UIViewController {
    var searchController: FUISearchController!
    let debouncer = Debouncer()
    var filterModel = FilterModel()
+   var productCountLabel = UILabel(frame: CGRect.zero)
    
    fileprivate var products = [Product]()
 
@@ -37,6 +40,7 @@ class ProductListViewController: UIViewController {
       tableView.rowHeight = UITableViewAutomaticDimension
       tableView.register(FUIObjectTableViewCell.self, forCellReuseIdentifier: objectCellId)
       configureSearchBar()
+      setup()
    }
    
    // MARK: Public Methods
@@ -96,6 +100,7 @@ class ProductListViewController: UIViewController {
       }
       
       self.products = products
+      updateProductCounter()
       tableView.reloadData()
    }
    
@@ -121,6 +126,26 @@ class ProductListViewController: UIViewController {
       productSearchBar.sizeToFit()
       
       definesPresentationContext = true
+   }
+   
+   func setup() {
+      filterButton.tintColor = .preferredFioriColor(forStyle: .tintColorDark)
+      
+      // add centered label with product count to the toolbar
+      productCountLabel.sizeToFit()
+      productCountLabel.backgroundColor = .clear
+      productCountLabel.textAlignment = .center
+      productCountLabel.font = .preferredFioriFont(forTextStyle: .caption2)
+      productCountBarButtonItem.customView = productCountLabel
+   }
+   
+   /// Updates the label in the status bar with the product count.
+   func updateProductCounter() {
+      
+      let productText = products.count == 1 ? "Product" : "Products"
+      
+      productCountLabel.text = "\(products.count) \(productText)"
+      productCountLabel.sizeToFit()
    }
    
    // MARK: - Navigation

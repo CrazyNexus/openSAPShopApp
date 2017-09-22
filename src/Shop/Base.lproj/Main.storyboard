@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Fp-Yh-scK">
-                                <rect key="frame" x="0.0" y="108" width="1024" height="660"/>
+                                <rect key="frame" x="0.0" y="108" width="1024" height="616"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCellID" id="G1f-c1-gvE" customClass="FUIObjectTableViewCell" customModule="SAPFiori">
@@ -65,16 +65,34 @@
                                     <constraint firstAttribute="height" constant="44" id="2OR-9d-XUx"/>
                                 </constraints>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOr-T3-8XJ">
+                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Filter" id="q0d-am-Dck">
+                                        <connections>
+                                            <segue destination="bH1-id-iip" kind="popoverPresentation" identifier="showFilter" popoverAnchorBarButtonItem="q0d-am-Dck" id="hhk-1Z-ASF">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VR8-OX-Gv6"/>
+                                    <barButtonItem title="Count" id="phh-gM-e1H"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ezG-Fa-mqi"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IJG-Fd-Qnj" firstAttribute="top" secondItem="eOr-T3-8XJ" secondAttribute="bottom" id="91j-Rn-XFk"/>
                             <constraint firstAttribute="trailing" secondItem="rl4-6h-JBO" secondAttribute="trailing" id="AtW-ld-F7z"/>
                             <constraint firstAttribute="trailing" secondItem="4Fp-Yh-scK" secondAttribute="trailing" id="KOS-g6-NR9"/>
                             <constraint firstItem="rl4-6h-JBO" firstAttribute="top" secondItem="6tW-Am-HBG" secondAttribute="bottom" id="Rdu-5Z-fPg"/>
+                            <constraint firstAttribute="trailing" secondItem="eOr-T3-8XJ" secondAttribute="trailing" id="WeK-LO-J1W"/>
                             <constraint firstItem="4Fp-Yh-scK" firstAttribute="leading" secondItem="R2u-kU-fqa" secondAttribute="leading" id="hBl-jT-2eS"/>
                             <constraint firstItem="rl4-6h-JBO" firstAttribute="leading" secondItem="R2u-kU-fqa" secondAttribute="leading" id="pKW-8o-fyH"/>
+                            <constraint firstItem="eOr-T3-8XJ" firstAttribute="top" secondItem="4Fp-Yh-scK" secondAttribute="bottom" id="qvV-JM-tC7"/>
                             <constraint firstItem="4Fp-Yh-scK" firstAttribute="top" secondItem="rl4-6h-JBO" secondAttribute="bottom" id="r2U-ix-voN"/>
-                            <constraint firstItem="IJG-Fd-Qnj" firstAttribute="top" secondItem="4Fp-Yh-scK" secondAttribute="bottom" id="scE-pt-TnX"/>
+                            <constraint firstItem="eOr-T3-8XJ" firstAttribute="leading" secondItem="R2u-kU-fqa" secondAttribute="leading" id="tRD-fU-reh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shop" id="4jN-mf-euG">
@@ -91,6 +109,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="q0d-am-Dck" id="pTc-xm-Rda"/>
+                        <outlet property="productCountBarButtonItem" destination="phh-gM-e1H" id="JLR-qG-geJ"/>
                         <outlet property="searchBarContainer" destination="rl4-6h-JBO" id="Rs1-74-e3x"/>
                         <outlet property="tableView" destination="4Fp-Yh-scK" id="Gra-8n-tRW"/>
                     </connections>
@@ -163,7 +183,67 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="659" y="848"/>
+            <point key="canvasLocation" x="1367" y="848"/>
+        </scene>
+        <!--Filter-->
+        <scene sceneID="O5z-C6-YAX">
+            <objects>
+                <tableViewController id="GWz-Cm-csl" customClass="FilterViewController" customModule="Shop" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nvV-wY-6SW">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nmW-nF-xfx">
+                                <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nmW-nF-xfx" id="zvV-1B-WWX">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GWz-Cm-csl" id="EDR-v9-owc"/>
+                            <outlet property="delegate" destination="GWz-Cm-csl" id="qu9-c3-Jx1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Filter" id="gvl-at-KCA">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QIJ-ZJ-XFC">
+                            <connections>
+                                <action selector="cancelFilter:" destination="GWz-Cm-csl" id="iJp-fe-edg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="TPk-Ro-5OT">
+                            <connections>
+                                <action selector="applyFilter:" destination="GWz-Cm-csl" id="MOd-UG-qIQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="applyFilter" destination="TPk-Ro-5OT" id="rgJ-Qt-zPh"/>
+                        <outlet property="cancelFilter" destination="QIJ-ZJ-XFC" id="yX8-xA-hJK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5wD-Uj-j5C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="848"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XDe-Zr-31p">
+            <objects>
+                <navigationController id="bH1-id-iip" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QCM-QV-KqQ" customClass="FUINavigationBar" customModule="SAPFiori">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GWz-Cm-csl" kind="relationship" relationship="rootViewController" id="jdG-hj-UNO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pWq-z5-ZKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-669" y="848"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ynU-z6-cdd">
@@ -179,7 +259,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8n-Cv-WqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="848"/>
+            <point key="canvasLocation" x="698" y="848"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
