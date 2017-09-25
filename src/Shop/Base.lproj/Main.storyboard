@@ -193,16 +193,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nmW-nF-xfx">
-                                <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nmW-nF-xfx" id="zvV-1B-WWX">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="GWz-Cm-csl" id="EDR-v9-owc"/>
                             <outlet property="delegate" destination="GWz-Cm-csl" id="qu9-c3-Jx1"/>
@@ -233,7 +223,7 @@
         <scene sceneID="XDe-Zr-31p">
             <objects>
                 <navigationController id="bH1-id-iip" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QCM-QV-KqQ" customClass="FUINavigationBar" customModule="SAPFiori">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QCM-QV-KqQ" customClass="FUINavigationBar" customModule="SAPFiori">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
