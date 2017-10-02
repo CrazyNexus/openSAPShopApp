@@ -111,7 +111,7 @@ public class AuthorizationManager: AuthorizationManagerProtocol {
                 }
             }
         } catch let error {
-            if case let SecureStorageError.backingStoreError(code, message) = error {
+            if case let SecureStorageError.backingStoreError(code, _) = error {
                 if code != 0 && code != 100 {
                     AuthorizationManager.logger.error("An error occured while opening the database.", error: error)
                 }
@@ -129,7 +129,7 @@ public class AuthorizationManager: AuthorizationManagerProtocol {
                 }
             }
         } catch let error {
-            if case let SecureStorageError.backingStoreError(code, message) = error {
+            if case let SecureStorageError.backingStoreError(code, _) = error {
                 if code != 0 && code != 100 {
                     AuthorizationManager.logger.error("An error occured while opening the database.", error: error)
                 }
